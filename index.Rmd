@@ -32,7 +32,8 @@ code[class^="sourceCode bash"]::before { content: "Bash Source"; }
 
 # Python Programing
 
-In the previous tutorial, we learned how to set up virtual environments to write and run python code. In today's tutorial, we will start using these environments. Next week we will work with spatial data analysis which more often than not results in data being displayed on a map. 
+In the previous tutorial, we learned how to set up virtual environments to write and run python code. In today's tutorial, we will start using these environments in VS Code, which will serve as our default IDE. Next week we will work with spatial data analysis which more often than not results in data being displayed on a map. 
+
 During this tutorial, we will demonstrate different ways to visualize data on a map in both static and interactive formats. This can be done using several open source packages that built upon each other. To understand the functionality of these packages and how they can be integrated, we will refer to the concepts of Object Oriented Programming (OOP). Object Oriented Programming is a way of programming where objects are fundamental building blocks that supports code modularity and reusability. Since OOP is commonly used in the development of open source packages, we can reuse and adapt already developed code and its functionality. Therefore, before we go into the visualization part of this tutorial we will begin by explaining Object Oriented Programming. 
 
 
@@ -55,11 +56,11 @@ dependencies:
   - matplotlib
 ```
 
-Create the environment using `mamba env create --file vector.yaml`.
+In the terminal of VS Code, create the environment using `mamba env create --file env.yaml`. Then activate this environment using `source activate python-programming`. Then select `python-programming` as interpreter, just as we did in the previous tutorial.
 
-# Python help
+<!--# Python help (This content is already in Tutorial 8)
 
-Before we dive into python, it makes sense to take some time to find how what to do if you are stuck. There are several ways to find help with programming in Python. Most packages, especially the larger ones, have a webpage with documentation. The documentation is a good first place to look for information. Secondly, googling your issue typically solves your problem too, because it finds answers on multiple platforms, such as StackOverflow and Github. Try to use terms that are used by others, don't include filepaths and personal variable names for example. Generative AI is also a useful source of coding help, but be careful, GenAI doesn't understand programming, it might come up with not existing functions for example. Lastly, during Geoscripting we have the forum to ask and give help. Asking your friends or colleagues in person is also a great way to learn and fix programming problems. Another good option is get documentation and more information about a package inside Python:
+Before we dive into python, it makes sense to take some time to find how what to do if you are stuck. There are several ways to find help with programming in Python. Most packages, especially the larger ones, have a webpage with documentation. The documentation is a good first place to look for information. Secondly, googling your issue typically solves your problem too, because it finds answers on multiple platforms, such as StackOverflow and Github. Try to use terms that are used by others, don't include filepaths and personal variable names for example. Generative AI is also a useful source of coding help, but be careful, GenAI doesn't understand programming, it might come up with not existing functions for example. Lastly, during Geoscripting we have the forum to ask and give help. Asking your friends or colleagues in person is also a great way to learn and fix programming problems. Another good option is get documentation and more information about a package inside Python. You can start a `Python REPL` in VS Code and run the code below to see what the `help()` function does:
 
 ```{Python,engine.path='/usr/bin/python3', eval=FALSE}
 import sys
@@ -71,6 +72,7 @@ See how the objects and functions in the `sys` package got listed.
 ```{block, type="alert alert-success"}
 > **Question 1**: What kind of functionality does the `sys` package provide?
 ```
+-->
 
 # Object-Oriented Programming in Python
 
@@ -91,11 +93,15 @@ class Person:
         print(f"Hello, my name is {self.name} and I'm {self.age} years old.")
 ```
 
-The `Person` class has two properties, `name` and `age`, as well as one method, `greet`. The `greet` method prints a greeting message that includes the person's name and age.
+In VS Code, you can create this class by pasting the code above into a .py file, saving it, and then running it in the terminal with `python3 your_class.py`.
+
+However, to walk through the code interactively step by step, it’s better to use a REPL or a Jupyter Notebook. You can start a REPL or open a Jupyter Notebook, paste the code above into a cell, and run it. Note that, even though we selected the interpreter in VS Code earlier for running .py files, Jupyter Notebooks run code through their own kernel, so we need to select the interpreter (python-programming in our case) again here to link the notebook’s kernel to the same environment.
+
+Before we use the class, let’s first examine it. The `Person` class has two properties, `name` and `age`, as well as one method, `greet`. The `greet` method prints a greeting message that includes the person's name and age.
 
 In the provided code, the `__init__` method is a special method known as a *constructor*. It is automatically called when an object (also known as instance of an class) is created from the class. The `self` parameter refers to the instance of the class itself, allowing access to its properties and methods that have been assigned during instance creation or when the class was defined Whenever a method is defined within a `class` (like `greet` method), we give `self` as the first parameter.
 
-To create an instance of the `Person` class, you simply call the class as if it were a function and assign the result to a variable:
+To create an instance of the `Person` class, you simply call the class as if it were a function and assign the result to a variable. In REPL or Jupyter Notebook, make sure to run the cell containing the Person class first, then run the code below in later cells to create and use its instances.
 
 ```{python, eval=FALSE}
 person1 = Person("Alice", 25)
@@ -114,7 +120,7 @@ person2.greet()      # Output: Hello, my name is Bob and I'm 30 years old.
 This example is straightforward, but keep in mind that classes can become more complex.
 
 ```{block, type="alert alert-success"}
-> **Question 2**: Take a look at the [implementation of a geoseries](https://github.com/geopandas/geopandas/blob/80edc868454d3fae943b734ed1719c2197806815/geopandas/geoseries.py#L79) object in GeoPandas. Don't be intimidated by the amount of code! It is not necessary to understand all of it. At line [948 the plot method is defined](https://github.com/geopandas/geopandas/blob/80edc868454d3fae943b734ed1719c2197806815/geopandas/geoseries.py#L948) it calls the [`plot_series` function as defined here](https://github.com/geopandas/geopandas/blob/80edc868454d3fae943b734ed1719c2197806815/geopandas/plotting.py#L313). What library is used for plotting and what exactly does `self` refer to when the `plot` method is defined?
+> **Question 1**: Take a look at the [implementation of a geoseries](https://github.com/geopandas/geopandas/blob/80edc868454d3fae943b734ed1719c2197806815/geopandas/geoseries.py#L79) object in GeoPandas. Don't be intimidated by the amount of code! It is not necessary to understand all of it. At line [948 the plot method is defined](https://github.com/geopandas/geopandas/blob/80edc868454d3fae943b734ed1719c2197806815/geopandas/geoseries.py#L948) it calls the [`plot_series` function as defined here](https://github.com/geopandas/geopandas/blob/80edc868454d3fae943b734ed1719c2197806815/geopandas/plotting.py#L313). What library is used for plotting and what exactly does `self` refer to when the `plot` method is defined?
 ```
 
 ## Inheritence
@@ -135,7 +141,7 @@ The difference lies in the code within the parentheses, which represents *inheri
 
 Phew, that's a lot of complicated code, and it may seem overwhelming. You don't need to understand every detail. The important thing is to grasp the value of classes, objects, and inheritance. When creating a class, we can inherit functionality from another class. How does this work in a simple example?
 
-So, we've learnt that with inheritance, classes can inherit all the functionality from other classes and build upon that. Let's create a new object called `Student`, which will inherit all the properties and methods from the `Person` class we defined earlier. In the end, a student is a person, and it possesses all its characteristics.
+So, we've learnt that with inheritance, classes can inherit all the functionality from other classes and build upon that. Let's create a new object called `Student`, which will inherit all the properties and methods from the `Person` class we defined earlier. In the end, a student is a person, and it possesses all its characteristics. Paste the code below to a new cell in REPL or Jupyter Notebook and run it.
 
 ```{python, eval=FALSE}
 class Student(Person):
@@ -164,7 +170,7 @@ student.study()             # Output: Eve is studying.
 In this example, `student` is an instance of the `Student` class. It can access the inherited properties from the `Person` class, such as `name`, as well as the newly added property `student_id` and `is_studying`, which defaults to `False`. Similarly, it can invoke both the inherited method `greet` and the additional method `study`, which are specific to the `Student` class. The method `study` prints a message and sets the `is_studying` property to `True`.
 
 ```{block, type="alert alert-success"}
-> **Question 3**: Create a new class called `Teacher`. This new class also inherits from `Person`. Define a method for the teacher that checks whether a student is studying. The student should be an input to the method. 
+> **Question 2**: Create a new class called `Teacher`. This new class also inherits from `Person`. Define a method for the teacher that checks whether a student is studying. The student should be an input to the method. 
 ```
 
 # Visualization
@@ -174,7 +180,7 @@ The most basic and one of the most used tools is *Matplotlib*, a general plottin
 
 ## Matplotlib
 
-In the most basic form plotting is very easy. Look at the code below:
+In the most basic form plotting is very easy. Look at the code below (again, you can try running this in both REPL or Jupyter Notebook, or your own preferred IDEs):
 
 ```{Python,engine.path='/usr/bin/python3'}
 import numpy as np
@@ -232,7 +238,7 @@ f, axarr = plt.subplots(2, sharex=True)
 ```
 
 ```{block, type="alert alert-success"}
-> **Question 4**: `axarr` is an array. What are the elements of this array and how many elements does it exist out of? 
+> **Question 3**: `axarr` is an array. What are the elements of this array and how many elements does it exist out of? 
 ```
 
 We can add a title to the figure and labels to the axes. Check [this documentation](https://matplotlib.org/stable/api/axes_api.html) to see what more you can tweak.
@@ -272,6 +278,8 @@ Finally! our plot is done for now. We have entered a lot of commands, stacked a 
 plt.show()
 ```
 
+Note that if you paste the above code blocks cell by cell in a REPL, you will see the final figure as expected. In Jupyter Notebook, however, you may get nothing at the last step. This is because Jupyter automatically renders and then closes the current figure at the end of each cell, so when you run the last cell with only `plt.show()`, there is no active figure left to display. The easiest solution is to paste all the code into a single cell and run it together!
+
 Alternatively we can use `plt.savefig('filename.png')` instead of showing it. Make sure to create the plot before you run this! `plt.show()` closes and the current plot, so calling savefig after show will result in an empty image. This is useful, otherwise we would keep adding stuff to the same plot.
 
 <img src="images/mpl2.png" alt="two subplots with shared x-axis" width="50%"/></img>
@@ -306,7 +314,7 @@ plt.show()
 <img src="images/mpl3.png" alt="matplotlib plot type examples" width="50%"/></img>
 
 ```{block, type="alert alert-success"}
-> **Question 5**: In the upper right subplot, why is there no point at x=3, y=8?.
+> **Question 4**: In the upper right subplot, why is there no point at x=3, y=8?.
 ```
 There are more types of graphs available, have look at the [Matplotlib documentation](https://matplotlib.org/stable/plot_types/index.html) and play around to find out more! 
 
@@ -343,10 +351,10 @@ We don't see anything yet! That's because we have not put anything on the map. L
 ax.coastlines()
 ```
 
-coastlines is a special case, apparently showing the coastlines happened so often that a special function was defined. Not everything is this simple sadly... In the [cartopy documentation](https://scitools.org.uk/cartopy/docs/v0.14/matplotlib/feature_interface.html) we can see that there exist pre defined features that we can add using the `add_feature` method from a `GeoAxes`. `ax.add_feature(cfeature.COASTLINE, linewidth=0.3, edgecolor='black')` does the same as `ax.coastlines()` (don't believe it? [Check the source](https://github.com/SciTools/cartopy/blob/75939f9e81ac67838c52ce80230e4431badbeace/lib/cartopy/mpl/geoaxes.py#L609)! ) effectively. Have a look and play around with adding other features! Using the `linewidth` and`edgecolor` arguments we can style the map. 
+coastlines is a special case, apparently showing the coastlines happened so often that a special function was defined. Not everything is this simple sadly... In the [cartopy documentation](https://scitools.org.uk/cartopy/docs/v0.14/matplotlib/feature_interface.html) we can see that there exist pre defined features that we can add using the `add_feature` method from a `GeoAxes`. `ax.add_feature(cfeature.COASTLINE, linewidth=0.3, edgecolor='black')` does the same as `ax.coastlines()` (don't believe it? [Check the source](https://github.com/SciTools/cartopy/blob/75939f9e81ac67838c52ce80230e4431badbeace/lib/cartopy/mpl/geoaxes.py#L609)! ) effectively. Have a look and play around with adding other features! Using the `linewidth` and`edgecolor` arguments we can style the map. Don't forget to `plt.show()` to see the map!
 
 ```{block, type="alert alert-success"}
-> **Question 6**: Create a worldwide map with 3 different features, each styled differently. Also add the stockimage to the map. Use [the documentation](https://scitools.org.uk/cartopy/docs/v0.14/matplotlib/geoaxes.html?highlight=stock#cartopy.mpl.geoaxes.GeoAxes.stock_img) to see how.
+> **Question 5**: Create a worldwide map with 3 different features, each styled differently. Also add the stockimage to the map. Use [the documentation](https://scitools.org.uk/cartopy/docs/v0.14/matplotlib/geoaxes.html?highlight=stock#cartopy.mpl.geoaxes.GeoAxes.stock_img) to see how.
 ```
 
 We have now step by step built up a map in a Pate Carree projection system. However, this projection has some major issues, have you seen [how big Antartica is at the equator](https://www.thetruesize.com)?! Let's quickly create another map in another projection. In the [documentation](https://scitools.org.uk/cartopy/docs/latest/reference/projections.html) we can find a large list of projections that can be used.
@@ -358,6 +366,7 @@ ax = plt.subplot(1, 1, 1, projection=projLae)
 ax.set_title("Lambert Azimuthal Equal Area Projection")
 ax.coastlines()
 ax.add_feature(cfeature.BORDERS, linewidth=0.5, edgecolor='blue')
+plt.show()
 ```
 
 ## Smaller maps
@@ -393,6 +402,8 @@ ax.set_extent((min_x, max_x, min_y, max_y), crs=crs)
 
 # Add the geometries to the map
 ax.add_geometries(gdf["geometry"], crs=crs, edgecolor = 'black', facecolor = '#FFFFFF')
+
+plt.show()
 ```
 
 ## Plotting rasters
