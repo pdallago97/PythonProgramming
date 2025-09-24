@@ -1,3 +1,3 @@
 ## PythonRefresher
 
-Tutorial 8 of Geoscripting course to refresh Python skills and to introduce Python working environment.
+Tutorial 9 of Geoscripting course to introduce Object Oriented Programming and Geo-visualization using Python.
