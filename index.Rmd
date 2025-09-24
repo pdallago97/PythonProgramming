@@ -447,6 +447,7 @@ dataset = rasterio.open('./LC81970242014109LGN00.tif')
 show(dataset, ax=ax,  cmap='gist_ncar')
 ```
 
+Remember to show or save the image! For this, run `plt.show()` to show the image, or `plt.savefig('filename.png')` to save the image.
 
 # What have we learned?
 
