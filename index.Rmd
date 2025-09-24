@@ -58,21 +58,6 @@ dependencies:
 
 In the terminal of VS Code, create the environment using `mamba env create --file env.yaml`. Then activate this environment using `source activate python-programming`. Then select `python-programming` as interpreter, just as we did in the previous tutorial.
 
-<!--# Python help (This content is already in Tutorial 8)
-
-Before we dive into python, it makes sense to take some time to find how what to do if you are stuck. There are several ways to find help with programming in Python. Most packages, especially the larger ones, have a webpage with documentation. The documentation is a good first place to look for information. Secondly, googling your issue typically solves your problem too, because it finds answers on multiple platforms, such as StackOverflow and Github. Try to use terms that are used by others, don't include filepaths and personal variable names for example. Generative AI is also a useful source of coding help, but be careful, GenAI doesn't understand programming, it might come up with not existing functions for example. Lastly, during Geoscripting we have the forum to ask and give help. Asking your friends or colleagues in person is also a great way to learn and fix programming problems. Another good option is get documentation and more information about a package inside Python. You can start a `Python REPL` in VS Code and run the code below to see what the `help()` function does:
-
-```{Python,engine.path='/usr/bin/python3', eval=FALSE}
-import sys
-help(sys)
-```
-
-See how the objects and functions in the `sys` package got listed.
-
-```{block, type="alert alert-success"}
-> **Question 1**: What kind of functionality does the `sys` package provide?
-```
--->
 
 # Object-Oriented Programming in Python
 
@@ -238,11 +223,7 @@ f, axarr = plt.subplots(2, sharex=True)
 ```
 
 ```{block, type="alert alert-success"}
-<<<<<<< HEAD
-> **Question 4**: `axarr` is an array. What are the elements of this array and how many elements does is exist out of? 
-=======
-> **Question 3**: `axarr` is an array. What are the elements of this array and how many elements does it exist out of? 
->>>>>>> 84ccbe8b7d03f5a295eda510e4a080eda9d97a04
+> **Question 4**: `axarr` is an array. What are the elements of this array and how many elements does is exist out of?
 ```
 
 We can add a title to the figure and labels to the axes. Check [this documentation](https://matplotlib.org/stable/api/axes_api.html) to see what more you can tweak.
@@ -447,6 +428,7 @@ dataset = rasterio.open('./LC81970242014109LGN00.tif')
 show(dataset, ax=ax,  cmap='gist_ncar')
 ```
 
+Remember to show or save the image! For this, run `plt.show()` to show the image, or `plt.savefig('filename.png')` to save the image.
 
 # What have we learned?
 
