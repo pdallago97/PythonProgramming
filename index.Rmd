@@ -32,7 +32,7 @@ code[class^="sourceCode bash"]::before { content: "Bash Source"; }
 
 # Python Programing
 
-In the previous tutorial, we learned how to set up virtual environments to write and run python code. In today's tutorial, we will start using these environments in VS Code, which will serve as our default IDE. Next week we will work with spatial data analysis which more often than not results in data being displayed on a map. 
+In the previous tutorial, we learned how to set up virtual environments to write and run python code. In today's tutorial, we will start using these environments in Positron, which will serve as our default IDE. Next week we will work with spatial data analysis which more often than not results in data being displayed on a map. 
 
 During this tutorial, we will demonstrate different ways to visualize data on a map in both static and interactive formats. This can be done using several open source packages that built upon each other. To understand the functionality of these packages and how they can be integrated, we will refer to the concepts of Object Oriented Programming (OOP). Object Oriented Programming is a way of programming where objects are fundamental building blocks that supports code modularity and reusability. Since OOP is commonly used in the development of open source packages, we can reuse and adapt already developed code and its functionality. Therefore, before we go into the visualization part of this tutorial we will begin by explaining Object Oriented Programming. 
 
