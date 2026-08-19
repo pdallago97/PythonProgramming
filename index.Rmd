@@ -44,19 +44,20 @@ During this tutorial, we will demonstrate different ways to visualize data on a 
 -   Add geospatial data to a map using rasterio for rasters, geopandas for vector 
 
 ## Dependencies
-For the tutorial today we make use of a set of packages. Create a new yaml file (`env.yaml` for example) and paste the following environment definition in it. 
+For the tutorial today we make use of a set of packages. Create a new folder using pixi
+
+'''
+pixi init python_programming
+cd python_programming
+'''
+
+ and add the following dependencies:
+
 ```
-name: python-programming
-dependencies:
-  - cartopy
-  - python
-  - spyder
-  - geopandas
-  - rasterio
-  - matplotlib
+pixi add python cartopy spyder geopandas rasterio matplotlib
 ```
 
-In the terminal of VS Code, create the environment using `mamba env create --file env.yaml`. Then activate this environment using `source activate python-programming`. Then select `python-programming` as interpreter, just as we did in the previous tutorial.
+Then make sure to select `python_programming` as interpreter, just as we did in the previous tutorial.
 
 
 # Object-Oriented Programming in Python
@@ -78,9 +79,9 @@ class Person:
         print(f"Hello, my name is {self.name} and I'm {self.age} years old.")
 ```
 
-In VS Code, you can create this class by pasting the code above into a .py file, saving it, and then running it in the terminal with `python3 your_class.py`.
+In Positron, you can create this class by pasting the code above into a .py file, saving it, and then running it in the terminal with `python3 your_class.py`.
 
-However, to walk through the code interactively step by step, it’s better to use a REPL or a Jupyter Notebook. You can start a REPL or open a Jupyter Notebook, paste the code above into a cell, and run it. Note that, even though we selected the interpreter in VS Code earlier for running .py files, Jupyter Notebooks run code through their own kernel, so we need to select the interpreter (python-programming in our case) again here to link the notebook’s kernel to the same environment.
+However, to walk through the code interactively step by step, it’s better to use a REPL or a Jupyter Notebook. You can start a REPL or open a Jupyter Notebook, paste the code above into a cell, and run it. Note that, even though we selected the interpreter in Positron earlier for running .py files, Jupyter Notebooks run code through their own kernel, so we need to select the interpreter (python_programming in our case) again here to link the notebook’s kernel to the same environment.
 
 Before we use the class, let’s first examine it. The `Person` class has two properties, `name` and `age`, as well as one method, `greet`. The `greet` method prints a greeting message that includes the person's name and age.
 
